@@ -1,0 +1,377 @@
+
+@import "../css/jquery-ui/jquery-ui.css";
+@import "../css/jquery-ui/jquery-ui.theme.css";
+@import "../css/jquery-ui/jquery-ui.structure.css";
+
+
+// #MAIN STYLES START
+// --------------------
+.pagination>.active>span{
+  background-color: #008d4c !important;
+  border-color: #008d4c;
+}
+
+.btn-success{
+  background-color: #00a65a;
+}
+
+.admin-page__header{
+  .fa{
+    font-size: 20px;
+  }
+}
+
+.table-buttons{
+
+  padding: 10px 0;
+  text-align: right;
+}
+
+.paginate_button.current{
+  background: white !important;
+}
+
+.paginate_button:hover{
+  background: #008d4c !important;
+  color:black !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+  color: white !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  color:white !important;
+}
+
+.paginate_button:hover{
+  border: 1px solid #008d4c !important;
+}
+
+
+input[type=search]{
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  height: 30px;
+  width: 200px;
+}
+
+.form-control-admin{
+  width: 100%;
+}
+
+.form-block{
+  background-color: rgba(255,255,255,0.9);
+  padding: 20px 0;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3)
+}
+
+.photo-container{
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-place {
+
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.photo-holder {
+
+  .fa {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 35px;
+    display: block;
+    vertical-align: middle;
+    transition: ease-in-out 200ms;
+  }
+
+  .fa-trash{
+    display: none;
+    position: absolute;
+    top: 32px;
+    left: 35px;
+  }
+
+  .photo-place-image{
+    max-width: 96px;
+    max-height: 96px;
+  }
+
+  img{
+    //transition: 100ms ease;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  cursor: pointer;
+
+  border: 1px dashed rgba(0, 0, 0, 0.5);
+  padding: 2px;
+  transition: ease-in 100ms;
+}
+
+.photo-holder:hover{
+  background-color: #00a65a;
+  border-color:white;
+
+  .fa.fa-plus{
+    color: white;
+    transform: rotate(90deg);
+    //transform-origin: center 15px;
+  }
+}
+
+.photo-place-filled .photo-holder:hover{
+  background-color: #d9534f;
+  border-color:white;
+
+  img{
+    opacity: 0.1;
+  }
+
+  .fa.fa-trash{
+    display: inline-block;
+    color: white;
+  }
+}
+
+.input-file-hidden{
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.admin-input-group{
+  padding: 15px 0;
+}
+
+.sortable-placeholder{
+  //background-color: #00a65a;
+}
+
+.rules-tooltip{
+
+  position: relative;
+
+  .rules-tooltip-text{
+    height: 0;
+    transition: all 200ms ease-out;
+    overflow: hidden;
+    min-width: 210px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    color:white;
+    font-size: 12px;
+    z-index: 1000;
+
+    width: auto;
+  }
+
+  &:hover .rules-tooltip-text{
+
+    padding:3px 7px;
+    height: auto;
+    font-size: 12px;
+    //background-color: white;
+    //box-shadow: 2px 2px 10px rgba(0,0,0,0.3)
+
+  }
+
+}
+// --------------------
+// X MAIN STYLES END
+
+
+// #DATATABLE START
+// --------------------
+.datatable-admin{
+  td {
+    background-color: #f9f9f9 !important;
+  }
+
+  th{
+    background-color: rgba(100,100,100,0.1) !important;
+  }
+
+  th, td{
+    border: 1px solid rgba(0,0,0,0.2) !important;
+    border-collapse: collapse !important;
+  }
+
+  tr td:first-child{
+    text-align: center;
+  }
+
+  tr td{
+    vertical-align: middle !important;
+    border: 1px solid rgba(0,0,0,0.2) !important;
+  }
+
+  tr td:nth-last-child(1){
+    text-align: center;
+    width: 70px;
+  }
+
+  border: 1px solid rgba(0,0,0,0.2) !important;
+  border-collapse: collapse !important;
+  margin: 10px 0 !important;
+
+}// datatable-admin
+
+// --------------------
+// X DATATABLE END
+
+// #SCHEDULE-TABLE START
+// --------------------
+
+
+.helper-message{
+  display: none;
+  vertical-align: middle;
+  position: relative;
+  top:7px;
+  border: none !important;
+}
+
+.schedule-table{
+
+  max-width: 1500px;
+  margin: 0 auto;
+
+  tbody tr:hover{
+    background-color: rgba(100,100,100,0.1);
+  }
+
+  tr td:nth-child(2){
+    //min-width: 550px;
+    //width: 400px;
+  }
+
+  td{
+    vertical-align: middle !important;
+  }
+
+  tr {
+    transition: 100ms ease;
+  }
+
+  tr.ui-sortable-helper{
+
+    text-align: center;
+
+    background-color: #008d4c !important;
+    opacity: 1 !important;
+    td{
+      display: none;
+    }
+
+    &::before{
+      content: "Перетащите на нужную позицию";
+      color: white !important;
+      text-align: center;
+      position: relative;
+      top:13px
+    }
+
+    position: relative;
+
+    .helper-message{
+      text-align: center;
+      color:white;
+      display: block;
+    }
+  }
+
+  .schedule-table-body{
+    //width: 100%;
+  }
+}
+
+//@media (min-width: 1024px){
+//
+//  .schedule-table-body{
+//
+//    tr td:nth-child(2), tr th:nth-child(1){
+//      width: 400px !important;
+//    }
+//    tr td:nth-child(3), tr th:nth-child(2){
+//      width: 200px !important;
+//    }
+//    tr td:nth-child(4), tr th:nth-child(3){
+//      width: 200px !important;
+//    }
+//    tr td:nth-child(5), tr th:nth-child(4){
+//      width: 100px !important;
+//    }
+//    tr td:nth-child(6), tr th:nth-child(5){
+//      width: 100px !important;
+//    }
+//    tr td:nth-child(7), tr th:nth-child(6){
+//      width: 50px !important;
+//    }
+//  }
+//}
+
+.schedule-add-container{
+  margin: 0 auto;
+  max-width: 1500px;
+  width: 100%;
+  text-align: center;
+  padding: 14px 0px;
+  opacity: 0.5;
+
+  transition: 100ms ease-in-out;
+
+  &:hover{
+    background-color: rgba(150,150,150,0.1);
+    cursor: pointer;
+    opacity: 1;
+  }
+}
+
+
+// --------------------
+// X SCHEDULE-TABLE END
+
+// #TABS SCHEDULE
+// --------------------
+.nav-tabs-schedule{
+  a{
+    color: #008d4c;
+  }
+
+  li.active a{
+    box-shadow: -1px -1px 3px rgba(0,0,0,0.1);
+    border-top:none !important;
+    border-left:none !important;
+    border-right:none !important;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  //border-bottom: none !important;
+  //
+  //li{
+  //  margin-bottom: -2px !important;
+  //}
+
+}
+// --------------------
+// X TABS SCHEDULE

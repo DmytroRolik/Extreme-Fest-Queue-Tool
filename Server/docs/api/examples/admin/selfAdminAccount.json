@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "user": {
+    "name": "Главный",
+    "surname": "Администратор",
+    "role_id": 1,
+    "permission_to_activities": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "permission_to_service": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  }
+}

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_marginTop="30dp"
+                android:id="@+id/relation"
+                android:background="#f5f5f5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutTop"
+                    android:background="@color/mainGreen"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <TextView
+                        android:fontFamily="@font/sandman"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/white"
+                        android:textStyle="italic"
+                        android:background="#07000000"
+                        android:text="@string/Queues"
+                        android:textSize="26sp"
+                        android:layout_width="300dp"
+                        android:layout_height="35dp" />
+
+
+
+                        <TextView
+
+                            android:layout_marginLeft="150dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingLeft="5dp"
+                            android:textSize="26sp"
+                            android:text="@string/Date"
+                            android:layout_width="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_height="35dp" />
+
+                        <Spinner
+                            android:layout_marginLeft="10dp"
+                            android:paddingLeft="5dp"
+                            android:id="@+id/spinner"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"/>
+
+                </LinearLayout>
+
+
+
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/recyclerActivity"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/linearLayoutTop"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="35dp"
+                    android:background="#11ffffff"
+                    android:layout_width="400dp"
+                    android:layout_height="match_parent"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/relativeBottom"
+                    android:background="@color/mainGreen"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <ImageView
+                app:layout_anchor="@id/relativeBottom"
+                app:layout_anchorGravity="top|left"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logodnmin"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+
+            <android.support.design.widget.FloatingActionButton
+                app:borderWidth="0dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/addFlBut"
+                app:layout_anchor="@id/relativeBottom"
+                app:layout_anchorGravity="top|right"
+                android:backgroundTint="#8b6914"
+                android:src="@drawable/ic_action_adduser_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </FrameLayout>
+
+</layout>

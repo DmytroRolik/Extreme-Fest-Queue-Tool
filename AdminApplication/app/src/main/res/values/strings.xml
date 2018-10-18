@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">DiplomAdmin</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="SaveMe">Запомни меня</string>
+    <string name="Password">Пароль</string>
+    <string name="Name">Имя</string>
+    <string name="Autorisation">Авторизоваться</string>
+    <string name="Date">Дата: </string>
+    <string name="Activities">Активности</string>
+    <string name="Queue">Очередь</string>
+    <string name="Queues">Очереди</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Login">Авторизоваться</string>
+    <string name="entrance">Вход</string>
+    <string name="Signing_in">Выполняется вход</string>
+
+
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    tools:context=".SettingActivity">
+
+
+    <RelativeLayout
+        android:background="@color/mainGreen"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_action_setting_white"
+            android:drawablePadding="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="22dp"
+            android:text="Настройки"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textAnim"
+            android:textSize="20dp"
+            android:layout_marginLeft="30dp"
+            android:text="Анимация"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabAnim"
+            android:layout_below="@+id/textAnim"
+            app:tabIndicatorHeight="0dp"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabBackground="@drawable/tab_selector"
+            android:background="@drawable/tablayout"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="match_parent">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_action_visibility_black"
+                />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_action_visibilityoff_black"/>
+
+        </android.support.design.widget.TabLayout>
+
+
+        <TextView
+            android:layout_below="@+id/tabAnim"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textTheme"
+            android:textSize="20dp"
+            android:layout_marginLeft="30dp"
+            android:text="Тема"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <android.support.design.widget.TabLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/tabTheme"
+            android:layout_below="@+id/textTheme"
+            app:tabIndicatorHeight="0dp"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabBackground="@drawable/tab_selector"
+            android:background="@drawable/tablayout"
+            android:layout_height="35dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_action_theme_green"/>
+
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_action_theme_blue"/>
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_action_theme_black"/>
+
+        </android.support.design.widget.TabLayout>
+
+
+
+        <TextView
+            android:layout_below="@+id/tabTheme"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textConnection"
+            android:textSize="20dp"
+            android:layout_marginLeft="30dp"
+            android:text="Соединение"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:layout_below="@+id/textConnection"
+            android:id="@+id/connection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Проверка"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+
+    android:background="#333333">
+
+
+    <TextView
+        android:textColor="@android:color/white"
+        android:text="Регистрация"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textInputLayouttextInputName"
+        android:layout_width="match_parent"
+        app:hintTextAppearance="@style/MyHint"
+        android:textColorHint="@android:color/white"
+        android:layout_height="wrap_content" >
+
+        <android.support.design.widget.TextInputEditText
+            android:paddingRight="25dp"
+            android:id="@+id/textInputName"
+            android:gravity="center"
+            android:background="#11ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Имя"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white" />
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/textInputLayouttextInputName"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textInputLayouttextInputSurName"
+        android:layout_width="match_parent"
+        app:hintTextAppearance="@style/MyHint"
+        android:textColorHint="@android:color/white"
+        android:layout_height="wrap_content" >
+
+        <android.support.design.widget.TextInputEditText
+            android:paddingRight="25dp"
+            android:id="@+id/textInputSurName"
+            android:gravity="center"
+            android:background="#11ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Фамилия"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayouttextInputNumber"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textInputLayouttextInputSurName"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        app:hintTextAppearance="@style/MyHint"
+        android:textColorHint="@android:color/white"
+        android:layout_height="wrap_content" >
+
+
+        <android.support.design.widget.TextInputEditText
+
+            android:paddingRight="25dp"
+            android:id="@+id/textInputNumber"
+            android:gravity="center"
+            android:background="#11ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Номер"
+            android:inputType="text"
+
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayouttextInputPassport"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textInputLayouttextInputNumber"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        app:hintTextAppearance="@style/MyHint"
+        android:textColorHint="@android:color/white"
+        android:layout_height="wrap_content" >
+
+
+        <android.support.design.widget.TextInputEditText
+            android:paddingRight="25dp"
+            android:id="@+id/textInputPassport"
+            android:gravity="center"
+            android:background="#11ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Паспорт"
+            android:inputType="textPassword"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <LinearLayout
+        android:layout_below="@+id/textInputLayouttextInputPassport"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></LinearLayout>
+
+
+</RelativeLayout>

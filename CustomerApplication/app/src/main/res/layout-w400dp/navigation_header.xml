@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="100dp"
+    android:background="@color/mainGreen">
+
+
+    <ImageView
+        android:layout_marginLeft="15dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/logodn120" />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:text="Donbass Extreme Fest"
+        android:fontFamily="@font/herman"
+        android:textColor="@android:color/white"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+
+</LinearLayout>

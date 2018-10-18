@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "date": "2018-09-09",
+    "start_time": "10:00:00",
+    "end_time": "17:00:00",
+    "name": "Скалолазание",
+    "main_photo": "http://example.com/images/asdaWDWA221.jpg"
+  },
+  {
+    "id": 2,
+    "date": "2018-09-09",
+    "start_time": "11:00:00",
+    "end_time": "18:00:00",
+    "name": "Троллей",
+    "main_photo": null
+  },
+  {
+    "id": 3,
+    "date": "2018-09-09",
+    "start_time": "14:00:00",
+    "end_time": "17:00:00",
+    "name": "Страйкбол",
+    "main_photo": "http://example.com/images/asdzzzzddsWA2551.jpg"
+  },
+  {
+    "id": 4,
+    "date": "2018-09-10",
+    "start_time": "09:00:00",
+    "end_time": "19:00:00",
+    "name": "Скалолазание",
+    "main_photo": null
+  },
+  {
+    "id": 5,
+    "date": "2018-09-10",
+    "start_time": "10:00:00",
+    "end_time": "15:00:00",
+    "name": "Слеклайн",
+    "main_photo": "http://example.com/images/1dzz22dsWA25.jpg"
+  },
+  {
+    "id": 6,
+    "date": "2018-09-10",
+    "start_time": "15:00:00",
+    "end_time": "19:00:00",
+    "name": "Парапланы",
+    "main_photo": "http://example.com/images/1dzz5135.jpg"
+  },
+  {
+    "id": 7,
+    "date": "2018-09-10",
+    "start_time": "09:00:00",
+    "end_time": "16:00:00",
+    "name": "Гравитационный батут",
+    "main_photo": "http://example.com/images/1defefssWA15.jpg"
+  },
+  {
+    "id": 8,
+    "date": "2018-09-11",
+    "start_time": "10:00:00",
+    "end_time": "14:00:00",
+    "name": "Скалолазание",
+    "main_photo": null
+  },
+  {
+    "id": 9,
+    "date": "2018-09-11",
+    "start_time": "10:00:00",
+    "end_time": "14:00:00",
+    "name": "Троллей",
+    "main_photo": "http://example.com/images/124213123dsd.jpg"
+  },
+  {
+    "id": 10,
+    "date": "2018-09-11",
+    "start_time": "09:00:00",
+    "end_time": "14:00:00",
+    "name": "Слеклайн",
+    "main_photo": "http://example.com/images/12sdadsasdsd.jpg"
+  }
+]

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/mainGreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/mainRelation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/main3"
+            tools:context=".MainActivity">
+
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/sandman"
+                android:text="@string/Login"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textInputLayouttextInputName"
+                android:layout_width="300dp"
+                app:hintTextAppearance="@style/MyHint"
+                android:textColorHint="@android:color/white"
+                android:layout_height="wrap_content" >
+
+                <android.support.design.widget.TextInputEditText
+                    android:paddingRight="25dp"
+                    android:id="@+id/textInputName"
+                    android:drawableLeft="@drawable/ic_action_name_white"
+                    android:gravity="center"
+                    android:background="#16ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="@string/Name"
+                    android:text="admin"
+                    android:textColorHint="@android:color/white"
+                    android:textColor="@android:color/white"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayouttextInputPassword"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textInputLayouttextInputName"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="300dp"
+                app:hintTextAppearance="@style/MyHint"
+                android:textColorHint="@android:color/white"
+                android:layout_height="wrap_content" >
+
+
+                <android.support.design.widget.TextInputEditText
+
+                    android:paddingRight="25dp"
+                    android:id="@+id/textInputPassword"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/ic_action_password_white"
+                    android:background="#11ffffff"
+                    android:text="admin"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:hint="@string/Password"
+                    android:inputType="textPassword"
+
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <CheckBox
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:textColor="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/checkBoxRememberMe"
+                android:text="@string/SaveMe"
+                android:layout_below="@+id/textInputLayouttextInputPassword"
+                android:layout_width="300dp"
+                android:layout_height="40dp" />
+
+
+            <Button
+                android:id="@+id/goToStartActivity"
+                android:background="@drawable/click_login_button"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/checkBoxRememberMe"
+                android:text="@string/entrance"
+                android:textColor="@android:color/white"
+                android:layout_width="100dp"
+                android:layout_height="50dp" />
+
+        </RelativeLayout>
+
+
+
+
+        <me.itangqi.waveloadingview.WaveLoadingView
+
+            android:background="@android:color/white"
+
+            android:layout_marginTop="100dp"
+            android:id="@+id/waveLoadingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:wlv_borderColor="@color/mainGreen"
+            app:wlv_borderWidth="0dp"
+            app:wlv_progressValue="10"
+            app:wlv_shapeType="circle"
+            app:wlv_round_rectangle="true"
+            app:wlv_triangle_direction="north"
+            app:wlv_titleCenterStrokeColor="@android:color/holo_blue_dark"
+            app:wlv_titleCenterStrokeWidth="3dp"
+            app:wlv_titleCenter="@string/Signing_in"
+            app:wlv_titleCenterColor="@android:color/white"
+            app:wlv_titleCenterSize="24sp"
+            app:wlv_waveAmplitude="70"
+            app:wlv_waveColor="@color/mainGreen"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</layout>

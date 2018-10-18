@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.AboutActivitiesFragment">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"/>
+
+            <LinearLayout
+                android:id="@+id/linearbottom"
+                android:layout_below="@+id/imageView"
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <TextView
+                    android:padding="2dp"
+                    android:background="@drawable/my_border"
+                    android:layout_weight="1.1"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:id="@+id/textViewCount"
+                    android:drawableLeft="@drawable/ic_action_countqueue_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:padding="2dp"
+                    android:background="@drawable/my_border"
+                    android:layout_weight="1.1"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/ic_action_avgtime_white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:id="@+id/textViewAvgTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_weight="0.8"
+                    android:background="@drawable/my_border"
+                    android:padding="2dp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:id="@+id/textViewTime"
+                    android:drawableLeft="@drawable/ic_action_time_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+            <WebView
+                android:layout_below="@+id/linearbottom"
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="WebViewLayout"></WebView>
+
+
+
+            <android.support.v7.widget.RecyclerView
+
+                android:layout_below="@id/webView"
+                android:id="@+id/recyclerImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</FrameLayout>

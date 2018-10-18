@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relationLayoutItemActiviti"
+    android:layout_margin="5dp"
+    android:background="@color/mainGreen"
+    android:layout_width="match_parent"
+    android:layout_height="220dp">
+
+
+    <ImageView
+        android:id="@+id/imageActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"/>
+
+
+
+    <TextView
+        android:id="@+id/nameActivity"
+        android:textColor="@color/white"
+        android:text="Активности"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sandman"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+</RelativeLayout>

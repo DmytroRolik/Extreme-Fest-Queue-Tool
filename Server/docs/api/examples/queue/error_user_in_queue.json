@@ -1,0 +1,5 @@
+{
+  "code" : 3,
+  "success" : false,
+  "message" : "User already in queue"
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/myqueues"
+            android:title="Мои очереди"/>
+
+        <item
+            android:id="@+id/activitys"
+            android:title="Активности"/>
+
+
+        <item
+            android:id="@+id/schedule"
+            android:title="Расписание" />
+
+        <item
+            android:id="@+id/map"
+            android:title="Карта"/>
+
+        <item
+            android:id="@+id/exit"
+            android:title="Выход" />
+
+    </group>
+
+</menu>

@@ -1,0 +1,390 @@
+#%RAML 1.0
+title: queuetool
+version: 1.0
+baseUri: https://queuetool.test/api/v1/
+securitySchemes:
+  basic:
+    description: |
+      API поддерживает HTTP Basic Authentication
+    type: Basic Authentication
+
+/service:
+  /service:
+    get:
+      description: |
+        ### Cписок разрешений
+        </br>
+        Возвращает полный список всех разрешений существующих в сервисе (*название и идентификатор*).
+        </br>
+        </br>
+        Пример URL метода:
+        ```sh
+        http://example.com/api/v1/service/service-permissions
+        ```
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/main/permissions.json
+        401:
+          description: |
+            Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль
+  /users:
+    post:
+      description: |
+        ### Регистрация нового пользователя
+        </br>
+        Регистрирует нового пользователя в системе. Поле **number** является логином пользователя, поле **passport**
+        его паролем
+        </br>
+        </br>
+        Пример URL метода:
+        ```sh
+        http://example.com/api/v1/users/
+        ```
+        </br>
+        Требования к данным:
+        * Поле **name** должно иметь длинну от **2** до **60** символов, является **обязательным**
+        * Поле **surname** должно иметь длинну от **2** до **60** символов, является **обязательным**
+        * Поле **number** должно иметь длинну от **1** до **60** символов, является **обязательным**
+        * Поле **passport** должно иметь длинну от **2** до **60** символов, является **обязательным**
+      body:
+        application/json:
+          example: !include examples/main/new_user_example.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/main/success.json
+        409:
+          body:
+            application/json:
+              example: !include examples/main/user_alredy_exist.json
+        400:
+          body:
+            application/json:
+              example: !include examples/main/error.json
+        403:
+          description: |
+            Данный аккаунт не имеет разрешения для работы с этим ресурсом
+          body:
+            application/json:
+              example: !include examples/queue/noActivityPermisson.json
+  /schedule:
+    get:
+      queryParameters:
+        date:
+          example: "2018-05-02"
+          type: string
+      description: |
+        ### Получить расписание
+        </br>
+        Возвращает расписание для фестиваля, c подробной информацией о каждой активности на все дни,
+        если не указан параметр **date**
+        </br>
+        </br>
+        Пример URL метода:
+        ```sh
+        http://example.com/api/v1/service/schedule?date=2018-05-02
+        ```
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/main/schedule.json
+  /dates:
+    get:
+      description: |
+        ### Получить даты дней фестиваля
+        </br>
+        Возвращает массив дат фестиваля отсортированный по возрастанию
+        </br>
+        </br>
+        Пример URL метода:
+        ```sh
+        http://example.com/api/v1/service/dates
+        ```
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/main/dates.json
+
+/admin:
+  /self:
+    get:
+      description: |
+        ### Информация об аккаунте
+        </br>
+        Возвращает полную информацию о текущем аккаунте администратора, включая список доступных ему разрешений на
+        активности и сервис.
+        </br>
+        </br>
+        * **permission_to_activities** - список идентификаторов активностей состояне которых пользователь имеет право изменять
+        (*ставить в очередь, удалять из очереди, отмечать опаздавших*)
+        * **permission_to_service** - список идентификаторов действий на сервисе, которые пользователь может
+        выполнять (*Регистрировать новых пользователей, редактировать расписание...*)
+        </br>
+        </br>
+        Пример URL метода:
+        ```sh
+        http://example.com/api/v1/admin/self
+        ```
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/admin/selfAdminAccount.json
+/queue:
+  securedBy: basic
+  /activities:
+    get:
+      queryParameters: 
+        date:
+          example: "2018-05-02"
+          type: string
+      description: |
+        ### Получение списка всех активностей
+        </br>
+        Возвращает все активности с поддержкой очереди. Для того чтобы вернуть активности только на один день,
+        необхоидмо задать **необязательный** параметр **date**
+        </br>
+        </br>
+        Пример URL метода:
+        ```sh
+        http://example.com/api/v1/queue/activities?date=2018-05-02
+        ```
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: !include examples/queue/activities.json
+        401:
+          description: |
+            Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль
+    /{activityId}:
+      uriParameters:
+        activityId:
+          type: integer
+          description: Идентификатор активности в расписании
+      get:
+        description: |
+         ### Информация об очереди
+         </br>
+         Возвращает информацию об очереди на активность. Параметр **length** указывает какое количество людей
+         находится в очереди на текущий момент. Параметр **averageTime** показывает среднее время прохождения
+         очереди одним человеком.
+
+         В случае если на активности 30 минут нет обновлений, время сбрасывается, и будет
+         возвращено значение **-1**. Минимальное количество пользователей, после которых будет сформировано
+         среднее время - **3**
+         </br>
+         </br>
+         Пример URL метода:
+         ```sh
+         http://example.com/api/v1/queue/activities/1
+         ```
+        responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/queue/activity_info.json
+            400:
+              body:
+                application/json:
+                  example: !include examples/queue/error.json
+            401:
+              description: |
+                Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль
+      /users:
+        get:
+          description: |
+            ### Информация о пользователях в очереди
+            </br>
+            Возвращает список пользователй, зарегестрированных в очереди и отсортированных по убыванию
+            </br>
+            </br>
+            Пример URL метода:
+            ```sh
+            http://example.com/api/v1/queue/activities/1/users
+            ```
+          queryParameters:
+            count:
+              type: integer
+              example: 5
+              default: all
+              description: Устанавливает, какое количество пользователей необходимо вернуть
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/queue/users_in_queue.json
+            401:
+             description: |
+                Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль
+        /self:
+          get:
+            description: |
+              ### Информация о текущем пользователе в очереди
+              </br>
+              Возвращает позицию **текущего аутентифицированного** пользователя в очереди
+              </br>
+              </br>
+              Пример URL метода:
+              ```sh
+              http://example.com/api/v1/queue/activities/1/users/self
+              ```
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: !include examples/queue/user_position.json
+              404:
+                body:
+                  application/json:
+                    example: !include examples/queue/error_user_not_in_queue.json
+          post:
+            description: |
+              ### Помещение текущего пользователя в очередь
+              </br>
+              Помещает **текущего аутентифицированного** пользователя в очередь на заданную активность
+              </br>
+              </br>
+              Пример URL метода:
+              ```sh
+              http://example.com/api/v1/queue/activities/1/users/self
+              ```
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: !include examples/queue/success.json
+              409:
+                body:
+                  application/json:
+                    example: !include examples/queue/error_user_in_queue.json
+              401:
+                description: |
+                  Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль
+          delete:
+            description: |
+              ### Удаление текущего пользователя из очереди
+              </br>
+              Удаляет **текущего аутентифицированного** пользователя из очереди на заданную активность
+              (Используется статус EXIT)
+              </br>
+              </br>
+              Пример URL метода:
+              ```sh
+              http://example.com/api/v1/queue/activities/1/users/self
+              ```
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: |
+                      {
+                        "code" : 2,
+                        "success" : true,
+                        "message" : "Operation success"
+                      }
+              404:
+                body:
+                  application/json:
+                    example: !include examples/queue/error_user_not_in_queue.json
+              401:
+                description: |
+                  Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль
+        /{userId}:
+          uriParameters:
+            userId:
+              type: integer
+              description: Уникальный идентификатор пользователя
+          post:
+            description: |
+              ### Поставить пользователя в очередь
+              </br>
+              Ставит в очередь пользователя с идентификатором **id**, если это возможно (*например если пользователь уже
+              не находится в очереди*)
+              </br>
+              </br>
+              Пример URL метода:
+              ```sh
+              http://example.com/api/v1/queue/activities/1/users/5
+              ```
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: !include examples/queue/success.json
+              409:
+                body:
+                  application/json:
+                    example: !include examples/queue/error_user_in_queue.json
+              404:
+                body:
+                  application/json:
+                    example: !include examples/main/userNotExist.json
+
+          delete:
+            description: |
+              ### Удалить пользователя из очереди
+              </br>
+              Удаляет пользователя из очереди на активность, используя заданный статус заданный в параметре **delete_method**
+              (*по умолчанию используется статус **STEP_OUT**, что обозначает успешное прохождение очереди пользователем*)
+              </br>
+              </br>
+              Пример URL метода:
+              ```sh
+              http://example.com/api/v1/queue/activities/1/users/5?delete_method=delete
+              ```
+            queryParameters:
+              delete_method:
+                enum:
+                  - step_out
+                  - exclude
+                  - delete
+                default: step_out
+                type: string
+                example: exclude
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: !include examples/queue/success.json
+              404:
+                body:
+                  application/json:
+                    example: !include examples/queue/error_user_not_in_queue.json
+              401:
+                description: |
+                  Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль
+              403:
+                description: |
+                  Данный аккаунт не имеет разрешения для работы с этим ресурсом
+                body:
+                  application/json:
+                    example: !include examples/queue/noActivityPermisson.json
+          patch:
+            description: |
+              ### Отмечает опоздание пользователя
+              </br>
+              Отмечает пользователя, как опоздавшего. Сдвигает опоздавшего пользователя на заданное в админ. панели
+              число позиций. В случае если очередной вызов данного метода делает число
+              опозданий пользователя большим, чем максимально возможное (*устанавливается администрацией*)
+              пользователь удаляется из очереди со статусом **EXCLUDED**
+              </br>
+              </br>
+              Пример URL метода:
+              ```sh
+              http://example.com/api/v1/queue/activities/1/users/5
+              ```
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: !include examples/queue/success.json
+              404:
+                body:
+                  application/json:
+                    example: !include examples/queue/error_user_not_in_queue.json

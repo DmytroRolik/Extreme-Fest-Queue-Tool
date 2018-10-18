@@ -1,0 +1,24 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variablesph
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Stylesheet
+//@import "";
+//@import '~almasaeed2010/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css';
+//@import '~almasaeed2010/adminlte/bower_components/font-awesome/css/font-awesome.min.css';
+//@import '~almasaeed2010/adminlte/bower_components/Ionicons/css/ionicons.min.css';
+//@import '~almasaeed2010/adminlte/dist/css/AdminLTE.min.css';
+//@import '~almasaeed2010/adminlte/dist/css/skins/skin-blue.min.css';
+
+@import "admin";
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}

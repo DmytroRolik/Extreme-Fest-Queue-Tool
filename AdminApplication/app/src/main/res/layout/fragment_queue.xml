@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.QueueFragment">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="#cccccc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/relativeTop"
+                android:background="@color/mainGreen"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:id="@+id/textQueue"
+                    android:textColor="@android:color/white"
+                    android:textStyle="italic"
+                    android:background="#07000000"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Очередь"
+                    android:textSize="22sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+                <ViewStub
+                    android:id="@+id/layout_stub"
+                    android:layout_below="@+id/textQueue"
+                    android:inflatedId="@+id/message_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+
+
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/empty"
+                android:text="Очередь пуста"
+                android:textSize="32dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <com.daprlabs.cardstack.SwipeFrameLayout
+
+                android:layout_below="@+id/relativeTop"
+                xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.daprlabs.cardstack.SwipeDeck
+                    android:layout_marginTop="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/swipe_deck"
+                    android:layout_width="320dp"
+                    android:layout_height="420dp"
+                    android:padding="5dp"
+                    swipedeck:card_spacing="10dp"
+                    swipedeck:max_visible="1"
+                    swipedeck:render_above="true"
+                    swipedeck:rotation_degrees="15" />
+
+            </com.daprlabs.cardstack.SwipeFrameLayout>
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/relativeBottom"
+                android:background="@color/mainGreen"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/ic_action_activity_black"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="Имя"
+                    android:id="@+id/textNameSchedule"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_marginTop="25dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/ic_action_queue_black"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/textAmountQueue"
+                    android:text="Количество"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            app:borderWidth="0dp"
+            android:id="@+id/addqueu"
+            android:layout_marginRight="50dp"
+            app:layout_anchor="@id/relativeBottom"
+            app:layout_anchorGravity="top|right"
+            android:backgroundTint="#8b6914"
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_action_addqueue_white"
+            android:layout_height="wrap_content" />
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            app:borderWidth="0dp"
+            android:id="@+id/showQueue"
+            app:layout_anchor="@id/relativeTop"
+            app:layout_anchorGravity="bottom|center"
+            android:backgroundTint="#8b6914"
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_action_queue_white"
+            android:layout_height="wrap_content" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+</FrameLayout>

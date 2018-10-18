@@ -1,0 +1,13 @@
+<resources>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="app_name">Экстрим Фэст</string>
+    <string name="not_account">Не имеете аккаунта?</string>
+    <string name="Registration">Регистрация</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Activities">Активити</string>
+    <string name="Date">Дата:</string>
+</resources>

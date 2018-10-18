@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="blackLogin">#333333</color>
+    <color name="blackLogin2">#5b5b5b</color>
+    <color name="black">#111111</color>
+
+    <color name="mainGreen">#008d4c</color>
+    <color name="mainGreenLigth">#66ba93</color>
+    <color name="mainGreenVeryLigth">#cce8db</color>
+
+    <color name="background">#aaaaaa</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="menuFirstColor">#32a36f</color>
+    <color name="menuSecondColor">#4caf81</color>
+    <color name="menuThirdColor">#66ba93</color>
+    <color name="menuFourthColor">#7fc6a5</color>
+</resources>

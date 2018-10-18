@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "163054169335",
+    "firebase_url": "https://donextrfestadminandroid-9ff0b.firebaseio.com",
+    "project_id": "donextrfestadminandroid-9ff0b",
+    "storage_bucket": "donextrfestadminandroid-9ff0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163054169335:android:4bf8ddc9ec1504b0",
+        "android_client_info": {
+          "package_name": "com.example.goron.diplomadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163054169335-omb9gaqhbtcqcd83j8ec51k19j56nmnj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.goron.diplomadmin",
+            "certificate_hash": "f2cced15c6b076fddda16ebbdeb6d5cb902878a4"
+          }
+        },
+        {
+          "client_id": "163054169335-rjbbvoptpko2ut3c60ifiol6lpck8953.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Xep6HSB0wY843Y00f3T3jLg2dc06rSI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163054169335-rjbbvoptpko2ut3c60ifiol6lpck8953.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

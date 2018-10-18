@@ -1,0 +1,33 @@
+{
+    "success": true,
+    "users": [
+        {
+            "id": 14,
+            "name": "Гость9",
+            "surname": "фестиваля",
+            "number": "119",
+            "passport": "BK 1243673"
+        },
+        {
+            "id": 11,
+            "name": "Гость6",
+            "surname": "фестиваля",
+            "number": "116",
+            "passport": "BK 0129924"
+        },
+        {
+            "id": 12,
+            "name": "Гость7",
+            "surname": "фестиваля",
+            "number": "117",
+            "passport": "BK 9303941"
+        },
+        {
+            "id": 15,
+            "name": "Гость10",
+            "surname": "фестиваля",
+            "number": "1110",
+            "passport": "BK 1213523"
+        }
+    ]
+}

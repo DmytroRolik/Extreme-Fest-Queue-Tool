@@ -1,0 +1,586 @@
+<!DOCTYPE HTML><html><head><title>queuetool API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 7.2.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+      .items {
+        background: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+      }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>queuetool API documentation <small>version 1.0</small></h1><p>https://queuetool.test/api/v1/</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="service" class="panel-title">/service</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_service_service"><span class="parent">/service</span>/service</a> <span class="methods"><a href="#service_service_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_service_service" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#service_service_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="c-">Cписок разрешений</h3><p><br>Возвращает полный список всех разрешений существующих в сервисе (<em>название и идентификатор</em>).<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/service/service-permissions
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="service_service_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/service</span>/service</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="c-">Cписок разрешений</h3><p><br>Возвращает полный список всех разрешений существующих в сервисе (<em>название и идентификатор</em>).<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/service/service-permissions
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#service_service_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="service_service_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": true,
+  "permissions": [
+    {
+      "id": 1,
+      "name": "Активности: просмотр"
+    },
+    {
+      "id": 2,
+      "name": "Активности: редактирование"
+    },
+    {
+      "id": 3,
+      "name": "Расписание: просмотр"
+    },
+    {
+      "id": 4,
+      "name": "Расписание: редактирование"
+    },
+    {
+      "id": 5,
+      "name": "Аккаунты: просмотр"
+    },
+    {
+      "id": 6,
+      "name": "Аккаунты: редактирование"
+    },
+    {
+      "id": 7,
+      "name": "Пользователи: просмотр"
+    },
+    {
+      "id": 8,
+      "name": "Пользователи: редактирование"
+    }
+  ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_service_users"><span class="parent">/service</span>/users</a> <span class="methods"><a href="#service_users_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_service_users" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#service_users_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><h3 id="-">Регистрация нового пользователя</h3><p><br>Регистрирует нового пользователя в системе. Поле <strong>number</strong> является логином пользователя, поле <strong>passport</strong> его паролем<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/users/
+</code></pre><p><br>Требования к данным:</p><ul><li>Поле <strong>name</strong> должно иметь длинну от <strong>2</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li><li>Поле <strong>surname</strong> должно иметь длинну от <strong>2</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li><li>Поле <strong>number</strong> должно иметь длинну от <strong>1</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li><li>Поле <strong>passport</strong> должно иметь длинну от <strong>2</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li></ul></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="service_users_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/service</span>/users</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Регистрация нового пользователя</h3><p><br>Регистрирует нового пользователя в системе. Поле <strong>number</strong> является логином пользователя, поле <strong>passport</strong> его паролем<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/users/
+</code></pre><p><br>Требования к данным:</p><ul><li>Поле <strong>name</strong> должно иметь длинну от <strong>2</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li><li>Поле <strong>surname</strong> должно иметь длинну от <strong>2</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li><li>Поле <strong>number</strong> должно иметь длинну от <strong>1</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li><li>Поле <strong>passport</strong> должно иметь длинну от <strong>2</strong> до <strong>60</strong> символов, является <strong>обязательным</strong></li></ul></div><ul class="nav nav-tabs"><li class="active"><a href="#service_users_post_request" data-toggle="tab">Request</a></li><li><a href="#service_users_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="service_users_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "name": "Jhon",
+  "surname": "Doe",
+  "number": "9023134",
+  "pssport": "BK12345"
+}</code></pre></div></div><div class="tab-pane" id="service_users_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code> {
+  "code" : 2,
+  "success" : true,
+  "message" : "Operation success"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 6,
+  "success" : false,
+  "message" : "Invalid params"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Данный аккаунт не имеет разрешения для работы с этим ресурсом</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": false,
+  "message": "This account does not have permission for use this resource"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "code" : 8,
+    "success" : false,
+    "message" : "User already exist"
+}</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_service_schedule"><span class="parent">/service</span>/schedule</a> <span class="methods"><a href="#service_schedule_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_service_schedule" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#service_schedule_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="-">Получить расписание</h3><p><br>Возвращает расписание для фестиваля, c подробной информацией о каждой активности на все дни, если не указан параметр <strong>date</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/service/schedule?date=2018-05-02
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="service_schedule_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/service</span>/schedule</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Получить расписание</h3><p><br>Возвращает расписание для фестиваля, c подробной информацией о каждой активности на все дни, если не указан параметр <strong>date</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/service/schedule?date=2018-05-02
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#service_schedule_get_request" data-toggle="tab">Request</a></li><li><a href="#service_schedule_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="service_schedule_get_request"><h3>Query Parameters</h3><ul><li><strong>date</strong>: <em>required (string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>2018-05-02</code></pre></div></li></ul></div><div class="tab-pane" id="service_schedule_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+  {
+    "id": 1,
+    "date": "2018-09-09",
+    "start_time": "10:00:00",
+    "end_time": "17:00:00",
+    "name": "Скалолазание",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 2,
+    "date": "2018-09-09",
+    "start_time": "11:00:00",
+    "end_time": "18:00:00",
+    "name": "Троллей",
+    "description": null,
+    "main_photo": "http://queuetool.testimages/app/activities/main_2.jpg",
+    "photos": [
+      "http://queuetool.testimages/app/activities/2_additional0.jpg",
+      "http://queuetool.testimages/app/activities/2_additional1.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "date": "2018-09-09",
+    "start_time": "14:00:00",
+    "end_time": "17:00:00",
+    "name": "Страйкбол",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 4,
+    "date": "2018-09-10",
+    "start_time": "09:00:00",
+    "end_time": "19:00:00",
+    "name": "Скалолазание",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 5,
+    "date": "2018-09-10",
+    "start_time": "10:00:00",
+    "end_time": "15:00:00",
+    "name": "Слеклайн",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 6,
+    "date": "2018-09-10",
+    "start_time": "15:00:00",
+    "end_time": "19:00:00",
+    "name": "Парапланы",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 7,
+    "date": "2018-09-10",
+    "start_time": "09:00:00",
+    "end_time": "16:00:00",
+    "name": "Гравитационный батут",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 8,
+    "date": "2018-09-11",
+    "start_time": "10:00:00",
+    "end_time": "14:00:00",
+    "name": "Скалолазание",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 9,
+    "date": "2018-09-11",
+    "start_time": "10:00:00",
+    "end_time": "14:00:00",
+    "name": "Троллей",
+    "description": null,
+    "main_photo": "http://queuetool.testimages/app/activities/main_2.jpg",
+    "photos": [
+      "http://queuetool.testimages/app/activities/2_additional0.jpg",
+      "http://queuetool.testimages/app/activities/2_additional1.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "date": "2018-09-11",
+    "start_time": "09:00:00",
+    "end_time": "14:00:00",
+    "name": "Слеклайн",
+    "description": null,
+    "main_photo": null,
+    "photos": []
+  },
+  {
+    "id": 11,
+    "date": "2018-09-09",
+    "start_time": "11:01:00",
+    "end_time": "22:02:00",
+    "name": "Троллей",
+    "description": null,
+    "main_photo": "http://queuetool.testimages/app/activities/main_2.jpg",
+    "photos": [
+      "http://queuetool.testimages/app/activities/2_additional0.jpg",
+      "http://queuetool.testimages/app/activities/2_additional1.jpg"
+    ]
+  }
+]</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_service_dates"><span class="parent">/service</span>/dates</a> <span class="methods"><a href="#service_dates_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_service_dates" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#service_dates_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="-">Получить даты дней фестиваля</h3><p><br>Возвращает массив дат фестиваля отсортированный по возрастанию<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/service/dates
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="service_dates_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/service</span>/dates</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Получить даты дней фестиваля</h3><p><br>Возвращает массив дат фестиваля отсортированный по возрастанию<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/service/dates
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#service_dates_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="service_dates_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": true,
+  "dates": [
+    "2018-09-09",
+    "2018-09-10",
+    "2018-09-11"
+  ]
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="admin" class="panel-title">/admin</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_admin_self"><span class="parent">/admin</span>/self</a> <span class="methods"><a href="#admin_self_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_admin_self" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#admin_self_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="-">Информация об аккаунте</h3><p><br>Возвращает полную информацию о текущем аккаунте администратора, включая список доступных ему разрешений на активности и сервис.<br><br></p><ul><li><strong>permission_to_activities</strong> - список идентификаторов активностей состояне которых пользователь имеет право изменять (<em>ставить в очередь, удалять из очереди, отмечать опаздавших</em>)</li><li><strong>permission_to_service</strong> - список идентификаторов действий на сервисе, которые пользователь может выполнять (<em>Регистрировать новых пользователей, редактировать расписание...</em>)<br><br>Пример URL метода:<pre><code class="lang-sh">http://example.com/api/v1/admin/self
+</code></pre></li></ul></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="admin_self_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/admin</span>/self</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Информация об аккаунте</h3><p><br>Возвращает полную информацию о текущем аккаунте администратора, включая список доступных ему разрешений на активности и сервис.<br><br></p><ul><li><strong>permission_to_activities</strong> - список идентификаторов активностей состояне которых пользователь имеет право изменять (<em>ставить в очередь, удалять из очереди, отмечать опаздавших</em>)</li><li><strong>permission_to_service</strong> - список идентификаторов действий на сервисе, которые пользователь может выполнять (<em>Регистрировать новых пользователей, редактировать расписание...</em>)<br><br>Пример URL метода:<pre><code class="lang-sh">http://example.com/api/v1/admin/self
+</code></pre></li></ul></div><ul class="nav nav-tabs"><li class="active"><a href="#admin_self_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="admin_self_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": true,
+  "user": {
+    "name": "Главный",
+    "surname": "Администратор",
+    "role_id": 1,
+    "permission_to_activities": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "permission_to_service": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  }
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="queue" class="panel-title">/queue</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_queue_activities"><span class="parent">/queue</span>/activities</a> <span class="methods"><a href="#queue_activities_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_queue_activities" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#queue_activities_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="-">Получение списка всех активностей</h3><p><br>Возвращает все активности с поддержкой очереди. Для того чтобы вернуть активности только на один день, необхоидмо задать <strong>необязательный</strong> параметр <strong>date</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities?date=2018-05-02
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/queue</span>/activities</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Получение списка всех активностей</h3><p><br>Возвращает все активности с поддержкой очереди. Для того чтобы вернуть активности только на один день, необхоидмо задать <strong>необязательный</strong> параметр <strong>date</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities?date=2018-05-02
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities_get_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities_get_request"><h3>Query Parameters</h3><ul><li><strong>date</strong>: <em>required (string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>2018-05-02</code></pre></div></li></ul></div><div class="tab-pane" id="queue_activities_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>[
+  {
+    "id": 1,
+    "date": "2018-09-09",
+    "start_time": "10:00:00",
+    "end_time": "17:00:00",
+    "name": "Скалолазание",
+    "main_photo": "http://example.com/images/asdaWDWA221.jpg"
+  },
+  {
+    "id": 2,
+    "date": "2018-09-09",
+    "start_time": "11:00:00",
+    "end_time": "18:00:00",
+    "name": "Троллей",
+    "main_photo": null
+  },
+  {
+    "id": 3,
+    "date": "2018-09-09",
+    "start_time": "14:00:00",
+    "end_time": "17:00:00",
+    "name": "Страйкбол",
+    "main_photo": "http://example.com/images/asdzzzzddsWA2551.jpg"
+  },
+  {
+    "id": 4,
+    "date": "2018-09-10",
+    "start_time": "09:00:00",
+    "end_time": "19:00:00",
+    "name": "Скалолазание",
+    "main_photo": null
+  },
+  {
+    "id": 5,
+    "date": "2018-09-10",
+    "start_time": "10:00:00",
+    "end_time": "15:00:00",
+    "name": "Слеклайн",
+    "main_photo": "http://example.com/images/1dzz22dsWA25.jpg"
+  },
+  {
+    "id": 6,
+    "date": "2018-09-10",
+    "start_time": "15:00:00",
+    "end_time": "19:00:00",
+    "name": "Парапланы",
+    "main_photo": "http://example.com/images/1dzz5135.jpg"
+  },
+  {
+    "id": 7,
+    "date": "2018-09-10",
+    "start_time": "09:00:00",
+    "end_time": "16:00:00",
+    "name": "Гравитационный батут",
+    "main_photo": "http://example.com/images/1defefssWA15.jpg"
+  },
+  {
+    "id": 8,
+    "date": "2018-09-11",
+    "start_time": "10:00:00",
+    "end_time": "14:00:00",
+    "name": "Скалолазание",
+    "main_photo": null
+  },
+  {
+    "id": 9,
+    "date": "2018-09-11",
+    "start_time": "10:00:00",
+    "end_time": "14:00:00",
+    "name": "Троллей",
+    "main_photo": "http://example.com/images/124213123dsd.jpg"
+  },
+  {
+    "id": 10,
+    "date": "2018-09-11",
+    "start_time": "09:00:00",
+    "end_time": "14:00:00",
+    "name": "Слеклайн",
+    "main_photo": "http://example.com/images/12sdadsasdsd.jpg"
+  }
+]</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_queue_activities__activityid_"><span class="parent">/queue/activities</span>/{activityId}</a> <span class="methods"><a href="#queue_activities__activityid__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_queue_activities__activityid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#queue_activities__activityid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="-">Информация об очереди</h3><p><br>Возвращает информацию об очереди на активность. Параметр <strong>length</strong> указывает какое количество людей находится в очереди на текущий момент. Параметр <strong>averageTime</strong> показывает среднее время прохождения очереди одним человеком.</p><p>В случае если на активности 30 минут нет обновлений, время сбрасывается, и будет возвращено значение <strong>-1</strong>. Минимальное количество пользователей, после которых будет сформировано среднее время - <strong>3</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/queue/activities</span>/{activityId}</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Информация об очереди</h3><p><br>Возвращает информацию об очереди на активность. Параметр <strong>length</strong> указывает какое количество людей находится в очереди на текущий момент. Параметр <strong>averageTime</strong> показывает среднее время прохождения очереди одним человеком.</p><p>В случае если на активности 30 минут нет обновлений, время сбрасывается, и будет возвращено значение <strong>-1</strong>. Минимальное количество пользователей, после которых будет сформировано среднее время - <strong>3</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__get_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__get_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li></ul></div><div class="tab-pane" id="queue_activities__activityid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "success": true,
+    "info": {
+        "length": 4,
+        "averageTime": 1023
+    }
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 6,
+  "success" : false,
+  "message" : "Invalid params"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_queue_activities__activityid__users"><span class="parent">/queue/activities/{activityId}</span>/users</a> <span class="methods"><a href="#queue_activities__activityid__users_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_queue_activities__activityid__users" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#queue_activities__activityid__users_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="-">Информация о пользователях в очереди</h3><p><br>Возвращает список пользователй, зарегестрированных в очереди и отсортированных по убыванию<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__users_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/queue/activities/{activityId}</span>/users</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Информация о пользователях в очереди</h3><p><br>Возвращает список пользователй, зарегестрированных в очереди и отсортированных по убыванию<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__users_get_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__users_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__users_get_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li></ul><h3>Query Parameters</h3><ul><li><strong>count</strong>: <em>required (integer - default: all)</em><p>Устанавливает, какое количество пользователей необходимо вернуть</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>5</code></pre></div></li></ul></div><div class="tab-pane" id="queue_activities__activityid__users_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+    "success": true,
+    "users": [
+        {
+            "id": 14,
+            "name": "Гость9",
+            "surname": "фестиваля",
+            "number": "119",
+            "passport": "BK 1243673"
+        },
+        {
+            "id": 11,
+            "name": "Гость6",
+            "surname": "фестиваля",
+            "number": "116",
+            "passport": "BK 0129924"
+        },
+        {
+            "id": 12,
+            "name": "Гость7",
+            "surname": "фестиваля",
+            "number": "117",
+            "passport": "BK 9303941"
+        },
+        {
+            "id": 15,
+            "name": "Гость10",
+            "surname": "фестиваля",
+            "number": "1110",
+            "passport": "BK 1213523"
+        }
+    ]
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль</p></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_queue_activities__activityid__users_self"><span class="parent">/queue/activities/{activityId}/users</span>/self</a> <span class="methods"><a href="#queue_activities__activityid__users_self_get"><span class="badge badge_get">get</span></a> <a href="#queue_activities__activityid__users_self_post"><span class="badge badge_post">post</span></a> <a href="#queue_activities__activityid__users_self_delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_queue_activities__activityid__users_self" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#queue_activities__activityid__users_self_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="-">Информация о текущем пользователе в очереди</h3><p><br>Возвращает позицию <strong>текущего аутентифицированного</strong> пользователя в очереди<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/self
+</code></pre></div><div class="clearfix"></div></div><div onclick="window.location.href = '#queue_activities__activityid__users_self_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><h3 id="-">Помещение текущего пользователя в очередь</h3><p><br>Помещает <strong>текущего аутентифицированного</strong> пользователя в очередь на заданную активность<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/self
+</code></pre></div><div class="clearfix"></div></div><div onclick="window.location.href = '#queue_activities__activityid__users_self_delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><h3 id="-">Удаление текущего пользователя из очереди</h3><p><br>Удаляет <strong>текущего аутентифицированного</strong> пользователя из очереди на заданную активность (Используется статус EXIT)<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/self
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__users_self_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/queue/activities/{activityId}/users</span>/self</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Информация о текущем пользователе в очереди</h3><p><br>Возвращает позицию <strong>текущего аутентифицированного</strong> пользователя в очереди<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/self
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__users_self_get_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__users_self_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__users_self_get_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li></ul></div><div class="tab-pane" id="queue_activities__activityid__users_self_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": true,
+  "position": 4
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 5,
+  "success" : false,
+  "message" : "User are not in queue"
+}     </code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__users_self_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/queue/activities/{activityId}/users</span>/self</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Помещение текущего пользователя в очередь</h3><p><br>Помещает <strong>текущего аутентифицированного</strong> пользователя в очередь на заданную активность<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/self
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__users_self_post_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__users_self_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__users_self_post_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li></ul></div><div class="tab-pane" id="queue_activities__activityid__users_self_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code> {
+  "code" : 2,
+  "success" : true,
+  "message" : "Operation success"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль</p><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 3,
+  "success" : false,
+  "message" : "User already in queue"
+}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__users_self_delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/queue/activities/{activityId}/users</span>/self</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Удаление текущего пользователя из очереди</h3><p><br>Удаляет <strong>текущего аутентифицированного</strong> пользователя из очереди на заданную активность (Используется статус EXIT)<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/self
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__users_self_delete_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__users_self_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__users_self_delete_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li></ul></div><div class="tab-pane" id="queue_activities__activityid__users_self_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 2,
+  "success" : true,
+  "message" : "Operation success"
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль</p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 5,
+  "success" : false,
+  "message" : "User are not in queue"
+}     </code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_queue_activities__activityid__users__userid_"><span class="parent">/queue/activities/{activityId}/users</span>/{userId}</a> <span class="methods"><a href="#queue_activities__activityid__users__userid__post"><span class="badge badge_post">post</span></a> <a href="#queue_activities__activityid__users__userid__delete"><span class="badge badge_delete">delete</span></a> <a href="#queue_activities__activityid__users__userid__patch"><span class="badge badge_patch">patch</span></a></span></h4></div><div id="panel_queue_activities__activityid__users__userid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#queue_activities__activityid__users__userid__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><h3 id="-">Поставить пользователя в очередь</h3><p><br>Ставит в очередь пользователя с идентификатором <strong>id</strong>, если это возможно (<em>например если пользователь уже не находится в очереди</em>)<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/5
+</code></pre></div><div class="clearfix"></div></div><div onclick="window.location.href = '#queue_activities__activityid__users__userid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><h3 id="-">Удалить пользователя из очереди</h3><p><br>Удаляет пользователя из очереди на активность, используя заданный статус заданный в параметре <strong>delete_method</strong> (<em>по умолчанию используется статус <strong>STEP_OUT</strong>, что обозначает успешное прохождение очереди пользователем</em>)<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/5?delete_method=delete
+</code></pre></div><div class="clearfix"></div></div><div onclick="window.location.href = '#queue_activities__activityid__users__userid__patch'" class="list-group-item"><span class="badge badge_patch">patch</span><div class="method_description"><h3 id="-">Отмечает опоздание пользователя</h3><p><br>Отмечает пользователя, как опоздавшего. Сдвигает опоздавшего пользователя на заданное в админ. панели число позиций. В случае если очередной вызов данного метода делает число опозданий пользователя большим, чем максимально возможное (<em>устанавливается администрацией</em>) пользователь удаляется из очереди со статусом <strong>EXCLUDED</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/5
+</code></pre></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__users__userid__post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/queue/activities/{activityId}/users</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Поставить пользователя в очередь</h3><p><br>Ставит в очередь пользователя с идентификатором <strong>id</strong>, если это возможно (<em>например если пользователь уже не находится в очереди</em>)<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/5
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__users__userid__post_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__users__userid__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__users__userid__post_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li><li><strong>userId</strong>: <em>required (integer)</em><p>Уникальный идентификатор пользователя</p></li></ul></div><div class="tab-pane" id="queue_activities__activityid__users__userid__post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code> {
+  "code" : 2,
+  "success" : true,
+  "message" : "Operation success"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": false,
+  "message": "User does not exist"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 3,
+  "success" : false,
+  "message" : "User already in queue"
+}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__users__userid__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/queue/activities/{activityId}/users</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Удалить пользователя из очереди</h3><p><br>Удаляет пользователя из очереди на активность, используя заданный статус заданный в параметре <strong>delete_method</strong> (<em>по умолчанию используется статус <strong>STEP_OUT</strong>, что обозначает успешное прохождение очереди пользователем</em>)<br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/5?delete_method=delete
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__users__userid__delete_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__users__userid__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__users__userid__delete_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li><li><strong>userId</strong>: <em>required (integer)</em><p>Уникальный идентификатор пользователя</p></li></ul><h3>Query Parameters</h3><ul><li><strong>delete_method</strong>: <em>required (one of step_out, exclude, delete - default: step_out)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>exclude</code></pre></div></li></ul></div><div class="tab-pane" id="queue_activities__activityid__users__userid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code> {
+  "code" : 2,
+  "success" : true,
+  "message" : "Operation success"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Неправильные доступы. Проверьте существование такого пользователя, а так же его логин и пароль</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>Данный аккаунт не имеет разрешения для работы с этим ресурсом</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "success": false,
+  "message": "This account does not have permission for use this resource"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 5,
+  "success" : false,
+  "message" : "User are not in queue"
+}     </code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="queue_activities__activityid__users__userid__patch"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_patch">patch</span> <span class="parent">/queue/activities/{activityId}/users</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="-">Отмечает опоздание пользователя</h3><p><br>Отмечает пользователя, как опоздавшего. Сдвигает опоздавшего пользователя на заданное в админ. панели число позиций. В случае если очередной вызов данного метода делает число опозданий пользователя большим, чем максимально возможное (<em>устанавливается администрацией</em>) пользователь удаляется из очереди со статусом <strong>EXCLUDED</strong><br><br>Пример URL метода:</p><pre><code class="lang-sh">http://example.com/api/v1/queue/activities/1/users/5
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#queue_activities__activityid__users__userid__patch_request" data-toggle="tab">Request</a></li><li><a href="#queue_activities__activityid__users__userid__patch_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="queue_activities__activityid__users__userid__patch_request"><h3>URI Parameters</h3><ul><li><strong>activityId</strong>: <em>required (integer)</em><p>Идентификатор активности в расписании</p></li><li><strong>userId</strong>: <em>required (integer)</em><p>Уникальный идентификатор пользователя</p></li></ul></div><div class="tab-pane" id="queue_activities__activityid__users__userid__patch_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code> {
+  "code" : 2,
+  "success" : true,
+  "message" : "Operation success"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "code" : 5,
+  "success" : false,
+  "message" : "User are not in queue"
+}     </code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#service">/service</a></li><li><a href="#admin">/admin</a></li><li><a href="#queue">/queue</a></li></ul></div></div></div></div></body></html>

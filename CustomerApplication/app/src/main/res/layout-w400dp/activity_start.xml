@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartActivity">
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:background="#20ffffff"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </android.support.v4.view.ViewPager>
+
+         <RelativeLayout
+            android:background="@color/mainGreen"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/header"
+                    android:orientation="vertical"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        android:id="@+id/textHeader"
+                        android:layout_gravity="center_horizontal"
+                        android:textAlignment="center"
+                        android:paddingTop="10dp"
+                        android:textSize="28sp"
+                        android:textColor="@color/white"
+                        android:layout_width="match_parent"
+                        android:background="#11ffffff"
+                        android:layout_height="match_parent" />
+
+
+                </RelativeLayout>
+
+
+                <FrameLayout
+                    android:id="@+id/content_frame"
+                    android:background="@color/blackLogin"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/blackLogin"
+        app:itemTextColor="@android:color/white"
+        app:itemTextAppearance="@style/NavDrawerTextStyle"
+        app:menu="@menu/navigation_menu"
+        app:headerLayout="@layout/navigation_header"/>
+
+</android.support.v4.widget.DrawerLayout>

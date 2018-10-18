@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+
+        <LinearLayout
+            android:background="@color/mainGreen"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:background="@drawable/center_layout_card"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/number"
+                android:layout_marginLeft="10dp"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:text="123654789"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/number"
+                android:drawablePadding="5dp"
+                android:text="Александр"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/mainGreen"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+</LinearLayout>
+
+
+
+
+</layout>
